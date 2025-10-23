@@ -1,7 +1,7 @@
 import React from "react";
 import type { Address } from "../hooks/useAddress";
 import { useDeleteAddress } from "../hooks/useDeleteAddress";
-import { useUserAuth } from "../../../context/UserAuthContext";
+//import { useUserAuth } from "../../../context/UserAuthContext";
 
 interface AddressItemProps {
   address: Address & { id: string };
@@ -17,7 +17,7 @@ const AddressItem: React.FC<AddressItemProps> = ({
   onRemove,
 }) => {
   const { deleteAddress, loading } = useDeleteAddress();
-  const { user } = useUserAuth();
+  //const { user } = useUserAuth();
 
   const handleRemove = async () => {
     if (!window.confirm("Are you sure you want to delete this address?")) return;

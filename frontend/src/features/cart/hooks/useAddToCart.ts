@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useCartContext } from "../../../context/CartContext";
-import { useUserAuth } from "../../../context/UserAuthContext";
+//import { useUserAuth } from "../../../context/UserAuthContext";
 
 export const useAddToCart = () => {
-  const { user } = useUserAuth();
+  //const { user } = useUserAuth();
   const { fetchCart } = useCartContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

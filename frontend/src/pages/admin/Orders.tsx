@@ -4,13 +4,40 @@ import type { OrderStatus } from "../../features/adminOrder/types";
 import { useOrders } from "../../features/adminOrder/hooks/useAdminOrders";
 import { useUpdateOrderStatus } from "../../features/adminOrder/hooks/useUpdateOrdersStatus";
 
+interface MappedOrder {
+  _id: string;
+  deliveryDetails: {
+    name: string;
+    street: string;
+    city: string;
+    state: string;
+    pincode: string;
+  };
+  items: {
+    product: {
+      _id: string;
+      name: string;
+      brand: string;
+      price: number;
+      images: string[];
+    };
+    quantity: number;
+  }[];
+  totalAmount: number;
+  paymentMethod: string;
+  date: string;
+  status: OrderStatus;
+}
+
+
 const Orders: React.FC = () => {
   // Fetch orders from API
   const { orders: apiOrders, totalPages, page, loading, error, nextPage, prevPage } = useOrders(1, 10);
   const { updateOrderStatus, loading: updating, error: updateError, successMessage } = useUpdateOrderStatus();
 
   // Local state for instant UI updates
-  const [orders, setOrders] = useState<typeof apiOrders>([]);
+ const [orders, setOrders] = useState<MappedOrder[]>([]);
+
 
   // Sync local state when API orders change
   useEffect(() => {

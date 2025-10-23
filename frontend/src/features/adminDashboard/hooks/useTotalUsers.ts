@@ -8,6 +8,7 @@ export interface User {
   role: string;
   createdAt: string;
   updatedAt: string;
+   blocked: boolean;
 }
 
 interface UsersApiResponse {

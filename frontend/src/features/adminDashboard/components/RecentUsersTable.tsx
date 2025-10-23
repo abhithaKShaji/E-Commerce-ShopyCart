@@ -10,7 +10,7 @@ const RecentUsersTable: React.FC<RecentUsersTableProps> = ({ pageSize = 5 }) => 
 
   const {
     users,
-    totalUsers,
+    //totalUsers,
     currentPage,
     totalPages,
     filter,

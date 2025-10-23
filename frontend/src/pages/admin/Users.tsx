@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UsersTable, { type User } from "../../features/adminUsers/components/UserTable";
-import { useAllUsers, type User as ApiUser } from "../../features/adminDashboard/hooks/useTotalUsers";
+import { useAllUsers } from "../../features/adminDashboard/hooks/useTotalUsers";
 import { useToggleUserStatus } from "../../features/adminUsers/hooks/useToggleUserStatus";
 
 // Skeleton Row

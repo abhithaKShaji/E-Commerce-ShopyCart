@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useUserAuth } from "../../../context/UserAuthContext";
+//import { useUserAuth } from "../../../context/UserAuthContext";
 
 interface ProductItem {
   productId: string;
@@ -24,7 +24,7 @@ export const useCreateOrder = () => {
   const [error, setError] = useState<string | null>(null);
   const [orderData, setOrderData] = useState<CreateOrderResponse | null>(null);
 
-  const { user } = useUserAuth();
+  //const { user } = useUserAuth();
 
   //  Added products parameter
   const createOrder = async (

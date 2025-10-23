@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Box, Users, Tag,  ShoppingCart, Package, Image, Monitor } from "lucide-react";
+import {  Users,  ShoppingCart, Package, Monitor } from "lucide-react";
 import profile from "../assets/profile.png";
 
 const AdminHeader: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+ // const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  const toggleDropdown = (id: string) =>
-    setOpenDropdown(openDropdown === id ? null : id);
+  //const toggleDropdown = (id: string) =>
+   // setOpenDropdown(openDropdown === id ? null : id);
 
   return (
     <div className="flex h-screen bg-gray-100">

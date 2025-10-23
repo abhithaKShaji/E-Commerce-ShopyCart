@@ -19,12 +19,12 @@ const SkeletonBox: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const Dashboard: React.FC = () => {
-  const { users, totalUsers, loading: usersLoading, error: usersError } = useAllUsers();
-  const { totalOrders, loading: ordersLoading, error: ordersError } = useOrders();
-  const { totalProducts, loading: productsLoading, error: productsError } = useTotalProducts();
+  const {  totalUsers, loading: usersLoading, error: usersError } = useAllUsers();
+  const { totalOrders } = useOrders();
+  const { totalProducts } = useTotalProducts();
   const { paymentCounts, loading: paymentLoading, error: paymentError } = usePaymentCounts();
   const { counts: orderStatusCounts, loading: statusLoading, error: statusError } = useOrderStatusCounts();
-  const { totalRevenue, loading: revenueLoading, error: revenueError } = useTotalRevenue();
+  const { totalRevenue,  error: revenueError } = useTotalRevenue();
 
   const orderStatus = [
     { status: "Placed", total: orderStatusCounts.placed },
@@ -81,7 +81,8 @@ const Dashboard: React.FC = () => {
         ) : usersError ? (
           <p className="text-red-500">{usersError}</p>
         ) : (
-          <RecentUsersTable userList={users} pageSize={5} />
+          <RecentUsersTable pageSize={5} />
+
         )}
       </div>
     </section>

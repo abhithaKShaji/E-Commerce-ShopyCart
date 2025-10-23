@@ -7,6 +7,8 @@ import { useDeleteAddress } from "../../checkout/hooks/useDeleteAddress";
 
 interface Props {}
 
+
+
 const Addresses: React.FC<Props> = () => {
   const { addresses, loading, error, fetchAddresses } = useAddresses();
   const { addAddress, loading: adding, error: addError } = useAddAddress();

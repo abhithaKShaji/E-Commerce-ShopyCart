@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React  from "react";
 import Sidebar from "../../features/profile/components/Sidebar";
 import ProfileDetails from "../../features/profile/components/ProfileDetails";
 import Addresses from "../../features/profile/components/Addresses";
 import { useUserProfile } from "../../features/login/hooks/useUserProfile";
 import ProfileSkeleton from "../../features/profile/components/ProfileSkeleton";
-import type { Address } from "../../features/profile/types";
+//import type { Address } from "../../features/profile/types";
 
 const ProfilePage: React.FC = () => {
   const { user, loading, error } = useUserProfile();
-  const [addresses, setAddresses] = useState<Address[]>([]);
+  //const [addresses, setAddresses] = useState<Address[]>([]);
 
-  const handleAddAddress = (address: Address) => setAddresses([...addresses, address]);
-  const handleRemoveAddress = (id: string) => setAddresses(addresses.filter((a) => a.id !== id));
+  //const handleAddAddress = (address: Address) => setAddresses([...addresses, address]);
+  //const handleRemoveAddress = (id: string) => setAddresses(addresses.filter((a) => a.id !== id));
 
   if (loading) {
     return <ProfileSkeleton />;
@@ -39,11 +39,8 @@ const ProfilePage: React.FC = () => {
             Email: user.email,
           }}
         />
-        <Addresses
-          addresses={addresses}
-          onAdd={handleAddAddress}
-          onRemove={handleRemoveAddress}
-        />
+        <Addresses />
+
       </div>
     </section>
   );
