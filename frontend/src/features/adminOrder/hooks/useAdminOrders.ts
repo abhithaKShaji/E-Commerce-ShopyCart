@@ -32,6 +32,8 @@ interface ApiResponse {
   orders: ApiOrder[];
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useOrders = (initialPage: number = 1, limit: number = 10) => {
   const [orders, setOrders] = useState<ApiOrder[]>([]);
   const [totalOrders, setTotalOrders] = useState<number>(0);
@@ -47,7 +49,7 @@ export const useOrders = (initialPage: number = 1, limit: number = 10) => {
         setError(null);
 
         const response = await axios.get<ApiResponse>(
-          `http://localhost:3000/api/order/all-orders`,
+          `${BASE_URL}/api/order/all-orders`,
           {
             params: { page, limit },
             withCredentials: true, // if using cookies/auth

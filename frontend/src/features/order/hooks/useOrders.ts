@@ -25,6 +25,8 @@ export interface Order {
   updatedAt: string;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useOrders = () => {
   const { user } = useUserAuth();
   const [orders, setOrders] = useState<Order[]>([]);
@@ -45,7 +47,7 @@ export const useOrders = () => {
         }
 
         const response = await axios.get(
-          "http://localhost:3000/api/order/user/me",
+          `${BASE_URL}/api/order/user/me`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

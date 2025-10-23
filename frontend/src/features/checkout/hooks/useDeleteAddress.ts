@@ -2,13 +2,15 @@
 import { useState } from "react";
 import axios from "axios";
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useDeleteAddress = () => {
   const [loading, setLoading] = useState(false);
 
   const deleteAddress = async (id: string, token: string) => {
     setLoading(true);
     try {
-      const res = await axios.delete(`http://localhost:3000/api/address/${id}`, {
+      const res = await axios.delete(`${BASE_URL}/api/address/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

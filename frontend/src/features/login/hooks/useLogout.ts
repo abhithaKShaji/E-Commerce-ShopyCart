@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import axios from "axios";
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useLogout = () => {
   const { logout: contextLogout } = useUserAuth(); 
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ export const useLogout = () => {
       const token = localStorage.getItem("user_token"); 
 
       await axios.post(
-        "http://localhost:3000/api/auth/logout",
+        `${BASE_URL}/api/auth/logout`,
         {},
         {
           headers: {

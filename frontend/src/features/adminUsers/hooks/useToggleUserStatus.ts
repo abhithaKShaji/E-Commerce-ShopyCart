@@ -11,6 +11,7 @@ interface UseToggleUserStatusResult {
   loading: boolean;
   error: string | null;
 }
+const BASE_URL = "https://shopycart-backend.onrender.com";
 
 export const useToggleUserStatus = (): UseToggleUserStatusResult => {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ export const useToggleUserStatus = (): UseToggleUserStatusResult => {
     try {
       // Always call /block/:id, send desired blocked state in body
       const response = await axios.put<ToggleStatusResponse>(
-        `http://localhost:3000/api/auth/block/${id}`,
+        `${BASE_URL}/api/auth/block/${id}`,
         { blocked: !currentStatus } // toggle the current status
       );
 

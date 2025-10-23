@@ -19,6 +19,8 @@ interface CreateOrderResponse {
   key: string;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useCreateOrder = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,12 +51,12 @@ export const useCreateOrder = () => {
 
     try {
       const { data } = await axios.post<CreateOrderResponse>(
-        "http://localhost:3000/api/checkout/create-order",
+       ` ${BASE_URL}/api/checkout/create-order`,
         {
           amount,
           addressId,
           paymentMethod,
-          products, // ✅ Send products
+          products, 
         },
         {
           headers: {

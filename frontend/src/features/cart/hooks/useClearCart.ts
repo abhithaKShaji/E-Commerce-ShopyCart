@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useClearCart = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -13,7 +15,7 @@ export const useClearCart = () => {
       const token = localStorage.getItem("user_token");
       if (!token) throw new Error("User not authenticated");
 
-      await axios.delete("http://localhost:3000/api/cart/clear", {
+      await axios.delete(`${BASE_URL}/api/cart/clear`, {
         headers: { Authorization: `Bearer ${token}` },
       });
     } catch (err: any) {

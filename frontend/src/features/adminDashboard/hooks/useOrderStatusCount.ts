@@ -15,6 +15,8 @@ interface UseOrderStatusCountsResult {
   error: string | null;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useOrderStatusCounts = (): UseOrderStatusCountsResult => {
   const [counts, setCounts] = useState<OrderStatusCounts>({
     placed: 0,
@@ -29,7 +31,7 @@ export const useOrderStatusCounts = (): UseOrderStatusCountsResult => {
     const fetchCounts = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/api/order/status-counts");
+        const res = await axios.get(`${BASE_URL}/api/order/status-counts`);
         if (res.data && res.data.orderStatusCounts) {
           setCounts(res.data.orderStatusCounts);
         }

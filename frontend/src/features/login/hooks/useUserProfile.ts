@@ -15,6 +15,8 @@ interface ProfileResponse {
   user: UserProfile;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useUserProfile = () => {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -29,7 +31,7 @@ export const useUserProfile = () => {
 
     try {
       const res = await axios.get<ProfileResponse>(
-        "http://localhost:3000/api/auth/users/profile",
+        `${BASE_URL}/api/auth/users/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

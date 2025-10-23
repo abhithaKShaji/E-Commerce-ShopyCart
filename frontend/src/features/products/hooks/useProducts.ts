@@ -28,6 +28,8 @@ interface FilterParams {
   maxPrice?: number;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useProducts = (filters: FilterParams) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -46,7 +48,7 @@ export const useProducts = (filters: FilterParams) => {
         if (filters.maxPrice) params.append("maxPrice", filters.maxPrice.toString());
 
         const response = await axios.get<ApiResponse>(
-          `http://localhost:3000/api/products?${params.toString()}`
+          `${BASE_URL}/api/products?${params.toString()}`
         );
 
         setProducts(response.data.products);

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useCartContext, type CartItem } from "../../../context/CartContext";
 //import { useUserAuth } from "../../../context/UserAuthContext";
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useRemoveFromCart = () => {
   //const { user } = useUserAuth();
   const {  setCart } = useCartContext();
@@ -28,7 +30,7 @@ export const useRemoveFromCart = () => {
           user: string;
           items: { product: any; quantity: number; _id: string }[];
         };
-      }>(`http://localhost:3000/api/cart/remove/${cartItemId}`, {
+      }>(`${BASE_URL}/api/cart/remove/${cartItemId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

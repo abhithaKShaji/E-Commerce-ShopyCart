@@ -20,6 +20,8 @@ interface LoginResponse {
   };
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +35,7 @@ export const useLogin = () => {
 
     try {
       const res = await axios.post<LoginResponse>(
-        "http://localhost:3000/api/auth/login",
+        `${BASE_URL}/api/auth/login`,
         data
       );
 

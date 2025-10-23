@@ -30,6 +30,8 @@ interface UseProductFiltersReturn {
   fetchProducts: (filters?: Filters) => void;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useProductFilters = (): UseProductFiltersReturn => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -48,7 +50,7 @@ export const useProductFilters = (): UseProductFiltersReturn => {
       if (filters?.minPrice) params.minPrice = filters.minPrice;
       if (filters?.maxPrice) params.maxPrice = filters.maxPrice;
 
-      const response = await axios.get("http://localhost:3000/api/products/filters", { params });
+      const response = await axios.get(`${BASE_URL}/api/products/filters`, { params });
       const data = response.data;
 
       setProducts(data.products || []);

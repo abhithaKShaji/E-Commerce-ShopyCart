@@ -23,6 +23,8 @@ interface UseAddressesReturn {
   fetchAddresses: () => Promise<void>;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useAddresses = (): UseAddressesReturn => {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -38,7 +40,7 @@ export const useAddresses = (): UseAddressesReturn => {
       if (!token) throw new Error("User not authenticated");
 
       const response = await axios.get<Address[]>(
-        "http://localhost:3000/api/address",
+        `${BASE_URL}/api/address`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

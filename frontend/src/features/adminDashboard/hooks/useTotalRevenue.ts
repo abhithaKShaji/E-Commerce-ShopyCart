@@ -14,6 +14,8 @@ interface UseTotalRevenueResult {
   error: string | null;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useTotalRevenue = (): UseTotalRevenueResult => {
   const [totalRevenue, setTotalRevenue] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -25,7 +27,7 @@ export const useTotalRevenue = (): UseTotalRevenueResult => {
       setError(null);
       try {
         const res = await axios.get<TotalRevenueResponse>(
-          "http://localhost:3000/api/order/total-revenue"
+          `${BASE_URL}/api/order/total-revenue`
         );
         setTotalRevenue(res.data.totalRevenue);
       } catch (err: any) {

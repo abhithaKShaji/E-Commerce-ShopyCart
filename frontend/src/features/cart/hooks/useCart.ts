@@ -24,6 +24,8 @@ interface Cart {
   items: CartItem[];
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useCart = () => {
   const { user } = useUserAuth();
   const [cart, setCart] = useState<Cart | null>(null);
@@ -39,8 +41,7 @@ export const useCart = () => {
         console.warn("No access token found");
         return;
       }
-
-      const res = await axios.get("http://localhost:3000/api/cart", {
+      const res = await axios.get(`${BASE_URL}/api/cart`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

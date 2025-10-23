@@ -13,6 +13,8 @@ interface RegisterResponse {
   message: string;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useRegister = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +26,7 @@ export const useRegister = () => {
     setSuccess(null);
 
     try {
-      const res = await axios.post<RegisterResponse>("http://localhost:3000/api/auth/register", data);
+      const res = await axios.post<RegisterResponse>(`${BASE_URL}/api/auth/register`, data);
       setSuccess(res.data.message);
       return res.data;
     } catch (err: any) {

@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useUpdateOrderStatus = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +16,7 @@ export const useUpdateOrderStatus = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/order/update-status/${orderId}`,
+        `${BASE_URL}/api/order/update-status/${orderId}`,
         { status },
         { withCredentials: true } // include cookies/token if needed
       );

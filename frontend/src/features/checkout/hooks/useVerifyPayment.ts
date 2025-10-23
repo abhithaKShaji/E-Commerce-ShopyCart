@@ -6,6 +6,8 @@ interface VerifyPaymentResponse {
   message: string;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useVerifyPayment = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -18,7 +20,7 @@ export const useVerifyPayment = () => {
 
     try {
       const { data } = await axios.post<VerifyPaymentResponse>(
-        "http://localhost:3000/api/checkout/verify-payment",
+        `${BASE_URL}/api/checkout/verify-payment`,
         paymentData
       );
 

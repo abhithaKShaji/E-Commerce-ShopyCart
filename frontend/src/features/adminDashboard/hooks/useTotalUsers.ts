@@ -20,6 +20,8 @@ interface UsersApiResponse {
   users: User[];
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useAllUsers = (
   initialFilter: "all" | "today" | "7days" | "30days" = "all",
   initialPage = 1,
@@ -39,7 +41,7 @@ export const useAllUsers = (
 
     try {
       const res: AxiosResponse<UsersApiResponse> = await axios.get(
-        `http://localhost:3000/api/auth/all-users`,
+        `${BASE_URL}/api/auth/all-users`,
         {
           params: {
             filter: filterValue,

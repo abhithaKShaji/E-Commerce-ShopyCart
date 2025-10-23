@@ -3,6 +3,8 @@ import axios from "axios";
 import { useCartContext } from "../../../context/CartContext";
 //import { useUserAuth } from "../../../context/UserAuthContext";
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useAddToCart = () => {
   //const { user } = useUserAuth();
   const { fetchCart } = useCartContext();
@@ -21,7 +23,7 @@ export const useAddToCart = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/api/cart/add",
+        `${BASE_URL}/api/cart/add`,
         { productId, quantity },
         {
           headers: {

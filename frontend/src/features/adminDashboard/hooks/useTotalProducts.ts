@@ -7,6 +7,8 @@ interface ProductCountResponse {
   message: string;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useTotalProducts = () => {
   const [totalProducts, setTotalProducts] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
@@ -19,7 +21,7 @@ export const useTotalProducts = () => {
         setError(null);
 
         const res: AxiosResponse<ProductCountResponse> = await axios.get(
-          "http://localhost:3000/api/products/count"
+          `${BASE_URL}/api/products/count`
         );
 
         setTotalProducts(res.data.totalProducts || 0);

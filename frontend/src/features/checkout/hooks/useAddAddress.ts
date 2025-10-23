@@ -18,6 +18,8 @@ interface UseAddAddressReturn {
   error: string | null;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useAddAddress = (): UseAddAddressReturn => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +31,7 @@ export const useAddAddress = (): UseAddAddressReturn => {
       const token = localStorage.getItem("user_token");
 
       const response = await axios.post<Address>(
-        "http://localhost:3000/api/address",
+        `${BASE_URL}/api/address`,
         data,
         {
           headers: {

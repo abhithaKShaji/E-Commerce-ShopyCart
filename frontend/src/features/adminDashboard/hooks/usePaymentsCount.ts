@@ -12,6 +12,8 @@ interface ApiResponse {
   message: string;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const usePaymentCounts = () => {
   const [paymentCounts, setPaymentCounts] = useState<PaymentCounts>({ COD: 0, Razorpay: 0 });
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,7 +26,7 @@ export const usePaymentCounts = () => {
         setError(null);
 
         const res: AxiosResponse<ApiResponse> = await axios.get(
-          "http://localhost:3000/api/order/payment-counts"
+          `${BASE_URL}/api/order/payment-counts`
         );
 
         setPaymentCounts(res.data.counts || { COD: 0, Razorpay: 0 });

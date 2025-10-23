@@ -18,6 +18,8 @@ interface ApiResponse {
   products: Product[];
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useProductsByCategory = (category?: string) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -35,7 +37,7 @@ export const useProductsByCategory = (category?: string) => {
 
       try {
         const { data } = await axios.get<ApiResponse>(
-          `http://localhost:3000/api/products/category/${category}`
+          `${BASE_URL}/api/products/category/${category}`
         );
         setProducts(data.products);
       } catch (err: any) {

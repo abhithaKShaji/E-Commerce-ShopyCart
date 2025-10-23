@@ -12,6 +12,8 @@ export interface Product {
   images: string[];
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useSingleProduct = (id: string) => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -23,7 +25,7 @@ export const useSingleProduct = (id: string) => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:3000/api/products/${id}`);
+        const res = await axios.get(`${BASE_URL}/api/products/${id}`);
         setProduct(res.data);
         setError(null);
       } catch (err: any) {

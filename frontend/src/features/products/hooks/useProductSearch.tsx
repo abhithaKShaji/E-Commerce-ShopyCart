@@ -14,6 +14,8 @@ export interface Product {
   updatedAt: string;
 }
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 export const useProductSearch = (query: string, page = 1, limit = 5) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
@@ -30,7 +32,7 @@ export const useProductSearch = (query: string, page = 1, limit = 5) => {
       setError(null);
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/products/search?query=${encodeURIComponent(query)}&page=${page}&limit=${limit}`
+          `${BASE_URL}api/products/search?query=${encodeURIComponent(query)}&page=${page}&limit=${limit}`
         );
         setProducts(res.data.products);
       } catch (err: any) {
