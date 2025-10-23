@@ -1,0 +1,6 @@
+export { default as authRoute } from './auth.route'
+export {default as productRoute} from './products.route'
+export {default as cartRoute} from './cart.route'
+export {default as checkoutRoute} from './checkout.route'
+export {default as orderRoute} from './order.route'
+export {default as addressRoute} from './address.route'
