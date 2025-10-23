@@ -9,6 +9,8 @@ import React, {
 import axios from "axios";
 import { useUserAuth } from "./UserAuthContext";
 
+const BASE_URL = "https://shopycart-backend.onrender.com";
+
 // ====== Interfaces ======
 export interface Product {
   _id: string;
@@ -52,12 +54,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     if (!token) return;
 
     try {
-      const res = await axios.get<Cart>("http://localhost:3000/api/cart", {
+      const res = await axios.get<Cart>(`${BASE_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCart(res.data);
     } catch (err) {
-      console.error("❌ Failed to fetch cart:", err);
+      console.error(" Failed to fetch cart:", err);
       setCart(null);
     }
   }, []);
