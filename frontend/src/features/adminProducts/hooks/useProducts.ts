@@ -20,6 +20,7 @@ interface ProductResponse {
   totalItems: number;
 }
 
+
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [page, setPage] = useState<number>(1);
@@ -33,7 +34,7 @@ export const useProducts = () => {
   const fetchProducts = async (pageNumber: number = 1) => {
     try {
       setLoading(true);
-      const res = await axios.get<ProductResponse>(`${BASE_URL}?page=${pageNumber}`);
+      const res = await axios.get<ProductResponse>(`${BASE_URL}/api/products?page=${pageNumber}`);
       setProducts(res.data.products);
       setPage(res.data.page);
       setTotalPages(res.data.totalPages);
@@ -49,7 +50,7 @@ export const useProducts = () => {
   const addProduct = async (formData: FormData) => {
     try {
       setActionLoading(true); 
-      const res = await axios.post(`${BASE_URL}`, formData, {
+      const res = await axios.post(`${BASE_URL}/api/products/create`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(res.data.message);
@@ -67,7 +68,7 @@ export const useProducts = () => {
   const updateProduct = async (id: string, formData: FormData) => {
     try {
       setActionLoading(true); 
-      const res = await axios.put(`${BASE_URL}/${id}`, formData, {
+      const res = await axios.put(`${BASE_URL}/api/products/${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(res.data.message);
@@ -85,7 +86,7 @@ export const useProducts = () => {
   const deleteProduct = async (id: string) => {
     if (!confirm("Are you sure you want to delete this product?")) return;
     try {
-      await axios.delete(`${BASE_URL}/${id}`);
+      await axios.delete(`${BASE_URL}/api/products/${id}`);
       setProducts((prev) => prev.filter((p) => p._id !== id));
       setError(null);
     } catch (err) {
