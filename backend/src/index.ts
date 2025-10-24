@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./config/db";
-//import { getEnvVariable } from "./utils/helpers";
+import { getEnvVariable } from "./utils/helpers";
 import { addressRoute, authRoute, cartRoute, checkoutRoute,  orderRoute, productRoute } from "./routes";
 
 const app = express();
@@ -11,11 +11,18 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 // Middlewares
-app.use(cors({
-  origin: "https://ecommerceshopycart.netlify.app",
-  credentials: true,
+app.use(
+  cors({
+    origin: [
+      "https://ecommerceshopycart.netlify.app",
+      "http://localhost:5173",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
-}));
 
  
 app.use(express.json());
