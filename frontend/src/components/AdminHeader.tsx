@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {  Users,  ShoppingCart, Package, Monitor } from "lucide-react";
+import { Users, ShoppingCart, Package, Monitor } from "lucide-react";
 import profile from "../assets/profile.png";
 
 const AdminHeader: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
- // const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  //const toggleDropdown = (id: string) =>
-   // setOpenDropdown(openDropdown === id ? null : id);
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar Toggle Button for mobile */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -48,7 +44,6 @@ const AdminHeader: React.FC = () => {
                 <span>Dashboard</span>
               </Link>
             </li>
-
             <li>
               <Link
                 to="/admin/users"
@@ -58,40 +53,6 @@ const AdminHeader: React.FC = () => {
                 <span>Manage Users</span>
               </Link>
             </li>
-
-          { /* <li>
-              <button
-                onClick={() => toggleDropdown("offers")}
-                className="w-full flex items-center justify-between px-4 py-2 hover:bg-gray-700 rounded-lg"
-              >
-                <span className="flex items-center gap-3">
-                  <Tag size={18} />
-                  Manage Offers
-                </span>
-                <ChevronDown size={16} />
-              </button>
-              {openDropdown === "offers" && (
-                <ul className="pl-10 space-y-1 text-sm">
-                  <li>
-                    <Link
-                      to="/admin/product-offer"
-                      className="block px-2 py-1 hover:text-amber-400"
-                    >
-                      Product Offers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="#"
-                      className="block px-2 py-1 hover:text-amber-400"
-                    >
-                      Coupon Codes
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </li>*/}
-
             <li>
               <Link
                 to="/admin/products"
@@ -101,7 +62,6 @@ const AdminHeader: React.FC = () => {
                 <span>Manage Products</span>
               </Link>
             </li>
-
             <li>
               <Link
                 to="/admin/orders"
@@ -117,7 +77,7 @@ const AdminHeader: React.FC = () => {
 
       {/* Main content */}
       <div
-        className={`flex-1 p-6 overflow-auto bg-white min-h-screen transition-all duration-300 ${
+        className={`flex-1 flex flex-col p-4 sm:p-6 overflow-auto bg-gray-100 transition-all duration-300 ${
           sidebarOpen ? "md:ml-64" : "md:ml-0"
         }`}
       >

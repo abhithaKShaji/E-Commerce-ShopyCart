@@ -85,6 +85,7 @@ const MainHeader: React.FC = () => {
                       navigate(`/view-product/${product._id}`);
                       setShowResults(false);
                       setSearchQuery("");
+                      setMobileMenuOpen(false);
                     }}
                   >
                     <img
@@ -171,24 +172,56 @@ const MainHeader: React.FC = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-white border-t shadow-md px-4 py-4 space-y-3">
-          {/* Search */}
-          <div className="flex items-center bg-blue-50 px-3 py-2 rounded w-full">
-            <Search className="text-gray-500" size={18} />
-            <input
-              type="text"
-              placeholder="Search for Products, Brands and More"
-              className="bg-transparent outline-none ml-2 w-full text-sm"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setShowResults(true);
-              }}
-              onFocus={() => searchQuery && setShowResults(true)}
-            />
+        <div className="sm:hidden bg-white border-t shadow-md px-4 py-4 space-y-3 relative">
+          {/* Mobile Search */}
+          <div className="relative">
+            <div className="flex items-center bg-blue-50 px-3 py-2 rounded w-full">
+              <Search className="text-gray-500" size={18} />
+              <input
+                type="text"
+                placeholder="Search for Products, Brands and More"
+                className="bg-transparent outline-none ml-2 w-full text-sm"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowResults(true);
+                }}
+                onFocus={() => searchQuery && setShowResults(true)}
+              />
+            </div>
+
+            {showResults && searchQuery && (
+              <div className="absolute left-0 right-0 bg-white border rounded shadow mt-2 max-h-60 overflow-y-auto z-50">
+                {searchLoading ? (
+                  <div className="p-2 text-gray-500">Loading...</div>
+                ) : searchResults.length > 0 ? (
+                  searchResults.map((product) => (
+                    <div
+                      key={product._id}
+                      className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+                      onMouseDown={() => {
+                        navigate(`/view-product/${product._id}`);
+                        setShowResults(false);
+                        setSearchQuery("");
+                        setMobileMenuOpen(false);
+                      }}
+                    >
+                      <img
+                        src={product.images[0]}
+                        alt={product.name}
+                        className="w-10 h-10 object-cover rounded"
+                      />
+                      <span className="text-sm">{product.name}</span>
+                    </div>
+                  ))
+                ) : (
+                  <div className="p-2 text-gray-500">No products found</div>
+                )}
+              </div>
+            )}
           </div>
 
-          {/* User / Profile */}
+          {/* User / Cart / Seller */}
           <button
             className="flex items-center gap-2 text-gray-700 hover:text-pink-600 w-full"
             onClick={handleUserClick}
@@ -196,7 +229,6 @@ const MainHeader: React.FC = () => {
             <User size={18} /> {user ? "Profile" : "Login"}
           </button>
 
-          {/* Cart */}
           <button
             className="flex items-center gap-2 text-gray-700 hover:text-pink-600 w-full"
             onClick={() => (user ? navigate("/cart") : navigate("/login"))}

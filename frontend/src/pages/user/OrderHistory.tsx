@@ -27,18 +27,20 @@ const OrderHistory: React.FC = () => {
   return (
     <section className="container mx-auto p-4 md:p-10 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
       <Sidebar />
-     
+
       {orders.length === 0 ? (
-        <p className="text-center text-gray-600 text-lg">You have no orders yet.</p>
+        <p className="text-center text-gray-600 text-lg flex-1">
+          You have no orders yet.
+        </p>
       ) : (
-        <div className="overflow-x-auto shadow-md rounded-lg bg-white">
-          <table className="min-w-full text-sm text-gray-700 border-collapse">
+        <div className="flex-1 overflow-x-auto shadow-md rounded-lg bg-white">
+          <table className="min-w-full text-sm text-gray-700 border-collapse table-auto">
             <thead className="bg-gray-100 text-gray-800 uppercase text-sm">
               <tr>
-                <th className="py-3 px-6 text-left">Item</th>
-                <th className="py-3 px-6 text-left">Date</th>
-                <th className="py-3 px-6 text-left">Amount</th>
-                <th className="py-3 px-6 text-left">Status</th>
+                <th className="py-3 px-4 sm:px-6 text-left">Item</th>
+                <th className="py-3 px-4 sm:px-6 text-left">Date</th>
+                <th className="py-3 px-4 sm:px-6 text-left">Amount</th>
+                <th className="py-3 px-4 sm:px-6 text-left">Status</th>
               </tr>
             </thead>
             <tbody>

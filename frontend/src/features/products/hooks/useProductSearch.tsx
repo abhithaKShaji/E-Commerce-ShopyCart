@@ -32,7 +32,7 @@ export const useProductSearch = (query: string, page = 1, limit = 5) => {
       setError(null);
       try {
         const res = await axios.get(
-          `${BASE_URL}api/products/search?query=${encodeURIComponent(query)}&page=${page}&limit=${limit}`
+          `${BASE_URL}/api/products/search?query=${encodeURIComponent(query)}&page=${page}&limit=${limit}`
         );
         setProducts(res.data.products);
       } catch (err: any) {

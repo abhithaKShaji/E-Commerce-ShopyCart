@@ -28,8 +28,9 @@ const CartPage = () => {
   }
 
   return (
-    <section className="p-6">
-      <div className="overflow-x-auto">
+    <section className="p-4 md:p-6 lg:p-10">
+      {/* Table for desktop/tablet */}
+      <div className="hidden md:block overflow-x-auto shadow rounded-lg bg-white">
         <table className="table-auto w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
@@ -40,16 +41,22 @@ const CartPage = () => {
           </thead>
           <tbody>
             {cart.items.map((item) =>
-              item?.product ? (
-                <CartItemRow key={item._id} item={item} />
-              ) : null 
+              item?.product ? <CartItemRow key={item._id} item={item} /> : null
             )}
           </tbody>
         </table>
       </div>
 
-      <div className="flex justify-end mt-6">
-        <div className="w-1/3">
+      {/* Card view for mobile */}
+      <div className="md:hidden space-y-4">
+        {cart.items.map((item) =>
+          item?.product ? <CartItemRow key={item._id} item={item} mobileView /> : null
+        )}
+      </div>
+
+      {/* Total and Checkout */}
+      <div className="flex flex-col md:flex-row justify-end mt-6 gap-4">
+        <div className="w-full md:w-1/3 bg-white p-4 rounded shadow">
           <div className="flex justify-between text-lg font-semibold mb-4">
             <span>Total:</span>
             <span>₹ {totalValue}</span>
