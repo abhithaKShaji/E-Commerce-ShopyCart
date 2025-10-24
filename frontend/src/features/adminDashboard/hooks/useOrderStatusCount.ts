@@ -31,7 +31,9 @@ export const useOrderStatusCounts = (): UseOrderStatusCountsResult => {
     const fetchCounts = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${BASE_URL}/api/order/status-counts`);
+        const res = await axios.get(`${BASE_URL}/api/order/status-counts`,
+          { withCredentials: true,}
+        );
         if (res.data && res.data.orderStatusCounts) {
           setCounts(res.data.orderStatusCounts);
         }
