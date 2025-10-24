@@ -20,10 +20,11 @@ router.get("/", getProducts);
 router.get("/count", getTotalProductCount);
 router.get("/search", searchProducts);
 router.get("/filters", filterProducts);
+router.get("/category/:category", getProductsByCategory);
 router.get("/:id", getProductById);
 router.put("/:id", imageUpload.array("images"), updateProduct);
 router.delete("/:id", deleteProduct);
-router.get("/category/:category", getProductsByCategory);
+
 
 
 

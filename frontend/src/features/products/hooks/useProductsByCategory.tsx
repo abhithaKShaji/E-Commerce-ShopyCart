@@ -41,7 +41,6 @@ export const useProductsByCategory = (category?: string) => {
         );
         setProducts(data.products);
       } catch (err: any) {
-        // Axios errors have a response object with message
         if (err.response?.data?.message) {
           setError(err.response.data.message);
         } else {
