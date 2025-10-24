@@ -2,6 +2,11 @@ import flats from '../../../assets/flats.webp'
 import dress from '../../../assets/dress.webp'
 import shoes from '../../../assets/shoes.webp'
 import perfume from '../../../assets/perfume.webp'
+import pot from '../../../assets/pot.webp'
+import home1 from '../../../assets/home1.webp'
+import wall from '../../../assets/wall.webp'
+import sheet from '../../../assets/sheet.webp'
+
 export const fashionDeals = [
   {
     image: dress,
@@ -31,26 +36,26 @@ export const fashionDeals = [
 
 export const homeDecorDeals = [
   {
-    image: "https://i.ibb.co/VqGvSPW/lights.png",
-    name: "Rice Lights",
+    image: wall,
+    name: "Wall Hangngs",
     highlight: "",
     offer: "Min. 50% Off",
   },
   {
-    image: "https://i.ibb.co/Z8J4mJb/floor-cover.png",
-    name: "Floor Coverings",
+    image: home1,
+    name: "Plants",
     highlight: "",
     offer: "Min. 50% Off",
   },
   {
-    image: "https://i.ibb.co/hCpZsVr/pots.png",
+    image: pot,
     name: "Plant Containers",
     highlight: "",
     offer: "Min. 50% Off",
   },
   {
-    image: "https://i.ibb.co/DVHsDdx/cover.png",
-    name: "Appliance Covers",
+    image: sheet,
+    name: "Bed Sheets",
     highlight: "",
     offer: "Min. 50% Off",
   },
