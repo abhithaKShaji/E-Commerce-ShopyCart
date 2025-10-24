@@ -37,7 +37,7 @@ export const fashionDeals = [
 export const homeDecorDeals = [
   {
     image: wall,
-    name: "Wall Hangngs",
+    name: "Wall Hangings",
     highlight: "",
     offer: "Min. 50% Off",
   },
