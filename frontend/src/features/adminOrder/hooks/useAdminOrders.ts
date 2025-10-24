@@ -52,7 +52,7 @@ export const useOrders = (initialPage: number = 1, limit: number = 10) => {
           `${BASE_URL}/api/order/all-orders`,
           {
             params: { page, limit },
-            withCredentials: true, // if using cookies/auth
+            withCredentials: true, 
           }
         );
 

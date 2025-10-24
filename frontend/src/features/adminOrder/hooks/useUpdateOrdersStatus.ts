@@ -18,14 +18,14 @@ export const useUpdateOrderStatus = () => {
       const response = await axios.put(
         `${BASE_URL}/api/order/update-status/${orderId}`,
         { status },
-        { withCredentials: true } // include cookies/token if needed
+        { withCredentials: true } 
       );
 
       if (response.data.success) {
         setSuccessMessage(response.data.message);
         toast.success(response.data.message);
 
-        return response.data.order; // return updated order
+        return response.data.order; 
       } else {
         setError("Failed to update order status");
         toast.error("Failed to update order status");

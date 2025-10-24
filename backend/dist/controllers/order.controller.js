@@ -20,7 +20,7 @@ const getMyOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res.status(401).json({ message: "User not authenticated" });
             return;
         }
-        console.log("🔹 Fetching orders for:", userId);
+        console.log(" Fetching orders for:", userId);
         const orders = yield order_model_1.Order.find({ userId })
             .populate({
             path: "products.productId",
