@@ -12,7 +12,7 @@ export const getMyOrders = async (req: AuthRequest, res: Response): Promise<void
       return;
     }
 
-    console.log("🔹 Fetching orders for:", userId);
+    console.log(" Fetching orders for:", userId);
 
     const orders = await Order.find({ userId }) 
       .populate({
